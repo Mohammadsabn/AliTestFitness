@@ -1,0 +1,185 @@
+/* --- Color Variables for Dark & Moody Theme --- */
+:root {
+  --bg-deep-dark: #0a0a0a; /* Almost Black Background */
+  --text-light: #eeeeee; /* Off-White Text */
+  --accent-blue: #00ffff; /* Electric Blue (Cyan) - Highlight */
+  --border-gray: #333333; /* Dark Border */
+}
+
+/* 1. Base Reset and Body Styling */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep-dark);
+  color: var(--text-light);
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+}
+
+/* --- 2. Header and Main Container Layout --- */
+header {
+  background-color: var(--bg-deep-dark);
+  padding: 20px 0; /* Padding badhaaya for bold look */
+  /* Bottom glow effect for moody feel */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.4);
+  border-bottom: 1px solid var(--border-gray);
+  position: relative;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- 3. Navigation Links (Left/Center) --- */
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 35px; /* Links ke beech zyada space */
+}
+
+.nav-links a {
+  color: var(--text-light); /* Off-White Text */
+  text-decoration: none;
+  font-size: 1.05em;
+  padding: 5px 0;
+  transition: all 0.3s;
+  font-weight: 600; /* Thoda bold */
+}
+
+.nav-links a:hover {
+  color: var(--accent-blue);
+  /* Unique underglow effect on hover */
+  text-shadow: 0 0 5px var(--accent-blue);
+}
+
+/* Contact CTA Button Styling (The most attractive element) */
+
+/* --- 4. Brand Name (Right Side) --- */
+.logo-group {
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  color: var(--accent-blue); /* Company Name ko Electric Blue dein */
+  text-decoration: none;
+  font-size: 1.3em; /* Thoda bada aur impactful */
+  font-weight: 800; /* Extra bold */
+  letter-spacing: 1.5px; /* Thoda zyada space for sharp look */
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: relative;
+}
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 3px;
+  /* Dark theme par Electric Blue line */
+  background-color: var(--accent-blue);
+  margin: 4px 0; /* Thoda kam space */
+  transition: transform 0.3s, opacity 0.3s;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    order: 1;
+    margin-right: 15px;
+  }
+
+  .brand-name {
+    order: 2;
+    font-size: 0.9em; /* Mobile par chota karein */
+    letter-spacing: 1px;
+  }
+
+  /* Mobile Menu: Full Dark Background */
+  .nav-links {
+    position: absolute;
+    top: 75px; /* Header height ke neeche */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Semi-transparent dark overlay */
+    border-top: 1px solid var(--accent-blue);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links.open {
+    max-height: 300px;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0; /* Zyada vertical space */
+  }
+
+  .nav-links a {
+    padding: 12px 0; /* Links ko touch karne mein aasan banayein */
+  }
+}
+
+/* /////////// MAIN SECTION */
+ /* Note: Replace 'service-bg.jpg' with your actual image path */
+  .hero-section {
+    /* 1. Background Image with Dark Overlay/Gradient */
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.7),
+        rgba(10, 10, 10, 0.9)
+      ),
+      url("/image/main_background.jpg") no-repeat center center;
+    background-size: cover; /* Ensures the image fills the entire section */
+
+    padding: 120px 0;
+    min-height: 600px; /* Ensures a good height for impact */
+    text-align: center;
+
+    /* Center the content vertically within the section */
+    display: flex;
+    align-items: center;
+  }
+  .hero-section h1 {
+    font-size: 3.5em;
+    font-weight: 900; 
+    color: var(--text-light);
+    margin-bottom: 25px;
+    
+    /* Moody Glow Effect (Matches Navbar) */
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6); 
+    letter-spacing: 1px;
+}
+.tagline {
+    font-size: 1.3em;
+    color: #AAAAAA; /* Softer, muted gray */
+    max-width: 900px;
+    margin: 0 auto 50px;
+    line-height: 1.5;
+}
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 25px; 
+    margin-bottom: 30px;
+}
