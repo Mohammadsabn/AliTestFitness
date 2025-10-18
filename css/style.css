@@ -98,6 +98,62 @@ header {
   margin: 4px 0; /* Thoda kam space */
   transition: transform 0.3s, opacity 0.3s;
 }
+
+
+.container {
+    /* Desktop Default: Center the content and set max-width */
+    max-width: 1200px; 
+    width: 90%; 
+    margin: 0 auto;
+}
+
+/* ======================================= */
+/* 3. HERO SECTION (DESKTOP DEFAULT) */
+/* ======================================= */
+.hero-section {
+    /* Background Image with Dark Overlay/Gradient */
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.7),
+        rgba(10, 10, 10, 0.9)
+      ),
+      url("/image/main_background.jpg") no-repeat center center;
+    background-size: cover;
+
+    /* Desktop Spacing & Alignment */
+    padding: 120px 0;
+    min-height: 600px;
+    text-align: center;
+
+    /* Flexbox for vertical centering */
+    display: flex;
+    align-items: center; /* Vertically center the .container */
+    justify-content: center; /* Optionally center content horizontally */
+}
+
+.hero-section h1 {
+    /* Desktop Font Styles */
+    font-size: 3.5em;
+    font-weight: 900; 
+    color: var(--text-light);
+    margin-bottom: 25px;
+    
+    /* Glow Effect */
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6); 
+    letter-spacing: 1px;
+}
+
+.tagline {
+    /* Desktop Tagline Styles */
+    font-size: 1.3em;
+    color: #AAAAAA; 
+    max-width: 900px; /* Reading line length limit */
+    margin: 0 auto 50px;
+    line-height: 1.5;
+}
+
+
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -138,48 +194,226 @@ header {
   .nav-links a {
     padding: 12px 0; /* Links ko touch karne mein aasan banayein */
   }
+
+  .hero-section h1
+  {
+    font-size: 2rem;
+    /* line-height: 1rem; */
+    margin-bottom: 2rem;
+  }
+  .tagline{
+    max-width: 100%;
+    font-size: 1rem;
+  }
+  .container{
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+  }
+  .hero-section {
+        padding: 60px 0px; /* Mobile style */
+    }
 }
 
-/* /////////// MAIN SECTION */
- /* Note: Replace 'service-bg.jpg' with your actual image path */
-  .hero-section {
-    /* 1. Background Image with Dark Overlay/Gradient */
+/* Variables and basic section style, jismein background hai */
+.services-section {
     background: linear-gradient(
         to bottom,
-        rgba(10, 10, 10, 0.7),
-        rgba(10, 10, 10, 0.9)
+        rgba(15, 15, 15, 0.9),
+        rgba(10, 10, 10, 0.95)
       ),
-      url("/image/main_background.jpg") no-repeat center center;
-    background-size: cover; /* Ensures the image fills the entire section */
-
-    padding: 120px 0;
-    min-height: 600px; /* Ensures a good height for impact */
+      url("/image/service-backgroud.png") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 80px 0; /* Desktop padding */
+    color: #ffffff; /* White text for contrast */
     text-align: center;
+}
 
-    /* Center the content vertically within the section */
+/* 🟢 DESKTOP GRID LAYOUT 🟢 */
+.services-grid {
+    display: grid; 
+    /* Desktop par 4 cards ko side-by-side fit karne ki koshish karega */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px; /* Cards ke beech space */
+    max-width: 1200px; 
+    margin: 0 auto; /* Grid ko center mein rakhega */
+}
+
+/* CARD STYLES (Dono views mein common) */
+.service-card {
+    background-color: rgba(255, 255, 255, 0.08); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
     display: flex;
+    flex-direction: column;
     align-items: center;
-  }
-  .hero-section h1 {
-    font-size: 3.5em;
-    font-weight: 900; 
-    color: var(--text-light);
-    margin-bottom: 25px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background-color: rgba(0, 255, 255, 0.05);
+    border-color: #00bcd4; /* Primary color border on hover */
+}
+
+.service-card .icon-wrapper {
+    font-size: 3em;
+    color: #00bcd4;
+    margin-bottom: 20px;
+    /* ... icon circle styles ... */
+}
+
+.service-card h3 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.service-card p {
+    font-size: 1em;
+    color: #AAAAAA;
+    line-height: 1.6;
+}
+
+
+/* ======================================= */
+/* 6. MEDIA QUERY FOR MOBILE DEVICES */
+/* ======================================= */
+@media (max-width: 767px) {
+    .services-section {
+        padding: 40px 0; /* Mobile par vertical padding kam kiya */
+    }
+
+    /* 📱 MOBILE GRID LAYOUT 📱 */
+    .services-grid {
+        /* Ab sirf 1 column set kiya, taki cards ek ke neeche ek aayen (Stacked) */
+        grid-template-columns: 1fr; 
+        gap: 20px;
+        margin: 0;
+        padding: 0 20px; /* Sides mein safety padding diya */
+    }
+
+    .service-card {
+        padding: 25px; /* Mobile card padding kam kiya */
+    }
+
+    .service-card h3 {
+        font-size: 1.5em; /* Mobile heading size kam kiya */
+    }
     
-    /* Moody Glow Effect (Matches Navbar) */
-    text-shadow: 0 0 15px rgba(0, 255, 255, 0.6); 
-    letter-spacing: 1px;
+    .service-card p {
+        font-size: 0.9em; /* Mobile paragraph size kam kiya */
+    }
 }
-.tagline {
-    font-size: 1.3em;
-    color: #AAAAAA; /* Softer, muted gray */
-    max-width: 900px;
-    margin: 0 auto 50px;
-    line-height: 1.5;
+
+/* Footer
+ */
+
+
+
+/* ======================================= */
+/* 7. FOOTER SECTION (DESKTOP DEFAULT) */
+/* ======================================= */
+
+.main-footer {
+    background-color: #050505; 
+    color: #CCCCCC;
+    padding: 50px 0 20px 0;
+    font-size: 1em;
 }
-.cta-group {
+
+/* NEW WRAPPER CLASS */
+.footer-wrapper {
+    /* Container/Wrapper ko center mein rakhta hai */
+    max-width: 1200px; 
+    width: 90%; /* Side space ke liye */
+    margin: 0 auto;
+}
+
+.main-footer h3 {
+    color: var(--primary-color, #00bcd4);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* 🟢 DESKTOP FLEX LAYOUT 🟢 */
+.footer-grid {
     display: flex;
-    justify-content: center;
-    gap: 25px; 
-    margin-bottom: 30px;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.footer-col {
+    flex-basis: 30%; 
+}
+
+/* ICONS and TEXT Styles */
+.footer-col p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* ICONS: This controls how the icons look */
+.footer-col i {
+    color: var(--primary-color, #00bcd4);
+    margin-right: 8px;
+    width: 20px; 
+    text-align: center;
+}
+
+/* Social Icons */
+.social-icons a {
+    color: #CCCCCC;
+    font-size: 1.5em;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color, #00bcd4);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.85em;
+    color: #888888;
+}
+
+/* ======================================= */
+/* 8. MEDIA QUERY FOR MOBILE (FOOTER) */
+/* ======================================= */
+@media (max-width: 767px) {
+    
+    .footer-wrapper {
+        width: 100%; /* Mobile par puri width use kare */
+        padding: 0 20px; /* Sides mein padding de diya */
+    }
+
+    .footer-grid {
+        /* 📱 MOBILE STACKED LAYOUT 📱 */
+        flex-direction: column; 
+        gap: 40px; 
+        text-align: center; 
+    }
+
+    .footer-col p {
+        /* Text aur icon ko center mein laya */
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+    }
+    
+    .social-links .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
 }
