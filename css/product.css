@@ -1,0 +1,292 @@
+/* ---------------------------------- */
+/* GLOBAL VARIABLES (GYM THEME) */
+/* ---------------------------------- */
+:root {
+    --product-primary-color: #ff5722;      /* Primary: Bright Orange/Red for Action/Focus */
+    --product-accent-color: #00bcd4;       /* Accent: Cyan/Blue for Secondary Focus/Price */
+    --product-text-light: #f0f0f0;         /* Light Text (for Dark Backgrounds) */
+    --product-text-dark: #121212;          /* Ultra Dark Background */
+    --product-bg-main: #1a1a1a;            /* Main Catalog Background (Charcoal) */
+    --product-card-bg: #2b2b2b;            /* Slightly Lighter Dark for Cards */
+}
+
+/* ---------------------------------- */
+/* A. CATALOG & GRID STYLES (DARK THEME) */
+/* ---------------------------------- */
+.product-catalog-main {
+    padding: 60px 20px;
+    background-color: var(--product-bg-main); /* Dark Background */
+    color: var(--product-text-light); /* Default Text is Light */
+    min-height: 80vh; /* Minimum height for better feel */
+}
+
+.product-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-catalog-heading {
+    text-align: center;
+    color: var(--product-primary-color); /* Bright Orange Heading */
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* High-Tech Glowing Effect */
+    text-shadow: 0 0 8px rgba(255, 87, 34, 0.4); 
+}
+
+/* Search Bar (Clean and Professional Look) */
+.product-search-bar { text-align: center; margin-bottom: 40px; }
+#product-catalog-search {
+    width: 90%; max-width: 600px; padding: 12px 25px;
+    border: 1px solid #444; /* Darker border */
+    background-color: #333; /* Darker input background */
+    color: var(--product-text-light);
+    border-radius: 30px; font-size: 1.1em;
+    transition: all 0.3s;
+}
+#product-catalog-search::placeholder { color: #888; }
+#product-catalog-search:focus {
+    border-color: var(--product-accent-color); /* Cyan focus border */
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.6); 
+    outline: none;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Product Card - High Contrast Fix */
+.product-card {
+    background: var(--product-card-bg); /* Dark Card Background */
+    color: var(--product-text-light); /* Default Card Text is Light */
+    border: 1px solid #3d3d3d; 
+    border-radius: 12px; 
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Deep Shadow */
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); /* Stronger lift on hover */
+    border-color: var(--product-primary-color); /* Highlight border */
+}
+
+.product-image {
+    width: 100%; height: 200px; object-fit: cover; border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* 🛑 VISIBILITY FIX: Price and Name Pop Out */
+.product-name {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: var(--product-text-light); /* Ensure name is bright white */
+    margin-bottom: 5px;
+}
+.product-price {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--product-accent-color); /* Bright Cyan Price */
+    margin: 5px 0 15px 0;
+}
+.product-dim-note {
+    color: #999; /* Subtler note */
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+/* 🛑 END VISIBILITY FIX */
+
+
+.product-add-to-cart-btn {
+    background-color: var(--product-primary-color); /* Bright Orange Button */
+    color: white; border: none;
+    padding: 12px 25px; border-radius: 8px; cursor: pointer;
+    font-size: 1em; font-weight: 700;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.product-add-to-cart-btn:hover {
+    background-color: #ff3d00;
+}
+
+/* ---------------------------------- */
+/* B. FLOATING CART BUTTON */
+/* ---------------------------------- */
+.product-floating-cart-btn {
+    position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+    border-radius: 50%; background-color: var(--product-accent-color); /* Cyan */
+    color: white; border: none; font-size: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6); z-index: 999;
+    transition: background-color 0.2s, transform 0.2s;
+}
+.product-floating-cart-btn:hover {
+    background-color: #00a4bd;
+    transform: scale(1.05);
+}
+
+#product-cart-count {
+    position: absolute; top: -5px; right: -5px;
+    background-color: var(--product-primary-color); /* Orange Counter */
+    color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px;
+}
+
+/* ---------------------------------- */
+/* C. MODAL (HIGH-TECH POP-UP) STYLES - IMPROVED UX */
+/* ---------------------------------- */
+.product-modal {
+    display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+    width: 100%; height: 100%; overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* Darker Overlay */
+    justify-content: center; align-items: center;
+}
+.product-modal.product-modal-show { display: flex; } 
+
+.product-modal-content {
+    background-color: var(--product-card-bg); /* Dark Card Background for Modal */
+    color: var(--product-text-light); /* Light Text */
+    padding: 30px; border-radius: 15px;
+    width: 90%; max-width: 650px; 
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 188, 212, 0.3); /* High-Tech Glow */
+    border: 1px solid var(--product-accent-color); /* Cyan Border */
+    animation: fadeIn 0.4s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.product-modal-title {
+    color: var(--product-primary-color);
+    margin-bottom: 20px;
+}
+
+.product-close-btn {
+    position: absolute; top: 15px; right: 25px; font-size: 35px;
+    font-weight: bold; color: var(--product-primary-color); cursor: pointer;
+    transition: color 0.2s;
+}
+.product-close-btn:hover { color: var(--product-accent-color); }
+
+/* --- CART ITEM IMPROVEMENTS --- */
+.product-cart-item {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; /* Vertical alignment improved */
+    padding: 15px 10px; /* Added horizontal padding */
+    border-bottom: 1px solid #3d3d3d; 
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+.product-cart-item:hover {
+    background-color: #383838; /* Subtle hover effect for better user feedback */
+    border-radius: 5px;
+}
+.product-cart-item:last-child { border-bottom: none; }
+
+.product-item-controls {
+    display: flex;
+    gap: 10px; /* Space between quantity input and remove button */
+    align-items: center;
+}
+
+.product-cart-item input[type="number"] {
+    width: 60px; padding: 8px; border: 1px solid #444; border-radius: 5px;
+    background-color: #333; color: var(--product-text-light);
+    text-align: center;
+    -moz-appearance: textfield; /* Firefox spinner removal */
+}
+/* Chrome, Safari, Edge spinner removal */
+.product-cart-item input::-webkit-outer-spin-button,
+.product-cart-item input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Remove button styled as a distinct circle */
+.product-cart-item .product-item-controls button {
+    background: var(--product-primary-color); 
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; /* Circular button */
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+.product-cart-item .product-item-controls button:hover {
+    background-color: #ff3d00;
+}
+
+
+/* Dimension Inputs - Made clearer */
+.product-dim-inputs { 
+    font-size: 0.9em; 
+    margin-top: 10px; /* Increased margin for clarity */
+    color: #aaa; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Increased gap */
+    padding-top: 5px;
+}
+.product-dim-inputs label {
+    font-weight: 600;
+    color: var(--product-accent-color); /* Label in Cyan for attention */
+}
+.product-dim-inputs input[type="number"] {
+    width: 50px; 
+    padding: 3px;
+    background-color: #333;
+    color: var(--product-text-light);
+    border-radius: 3px;
+    text-align: center;
+}
+
+.product-cart-summary {
+    margin-top: 30px; 
+    border-top: 3px solid var(--product-primary-color); /* Thicker separator */
+    padding-top: 15px; 
+    font-size: 1.2em;
+}
+.product-total-price-row {
+    color: var(--product-primary-color); /* Final Price in Orange */
+    font-weight: 700;
+    font-size: 1.4em; /* Make total price stand out */
+}
+
+.product-place-order-btn {
+    width: 100%; padding: 18px; margin-top: 25px;
+    background-color: #25D366; color: white; border: none;
+    border-radius: 8px; cursor: pointer; font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+.product-place-order-btn:hover { background-color: #1ea353; }
+
+
+/* ---------------------------------- */
+/* D. MOBILE RESPONSIVENESS */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+    .product-catalog-main { padding: 40px 10px; }
+    .product-catalog-heading { font-size: 2em; }
+    .product-grid { grid-template-columns: 1fr; }
+    .product-floating-cart-btn { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+    
+    .product-modal-content { max-width: 95%; }
+    .product-cart-item { flex-direction: column; align-items: stretch; }
+    .product-item-details, .product-item-controls { width: 100%; margin-bottom: 10px; }
+    .product-dim-inputs { display: flex; gap: 10px; flex-wrap: wrap; }
+    .product-item-controls { display: flex; justify-content: space-between; align-items: center; }
+}

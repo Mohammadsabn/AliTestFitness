@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ali Fitness Services</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/product.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav id="main-nav" class="nav-links">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="/products.html">Products</a></li>
+            <li><a href="#contact" class="cta-button">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="logo-group">
+          <button
+            class="menu-toggle"
+            aria-controls="main-nav"
+            aria-expanded="false"
+          >
+            <span class="hamburger"></span>
+          </button>
+
+          <a href="#home" class="brand-name">
+            GYM SPARE PARTS REPAIR AND SERVICES
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="product-catalog-main">
+    <div class="product-container">
+        <h1 class="product-catalog-heading">Fitness Equipment Spares Catalog</h1>
+        
+        <div class="product-search-bar">
+            <input type="text" id="product-catalog-search" placeholder="Search by Part Name or ID..." />
+        </div>
+
+        <div class="product-grid" id="product-grid">
+            <p>Loading products...</p>
+        </div>
+    </div>
+</main>
+
+<button class="product-floating-cart-btn" id="product-open-cart" aria-label="Open Shopping Cart">
+    <i class="fas fa-shopping-cart"></i> 
+    <span id="product-cart-count">0</span>
+</button>
+
+<div class="product-modal" id="product-cart-modal">
+    <div class="product-modal-content">
+        <h2 class="product-modal-title">Your Quotation Cart</h2>
+        <span class="product-close-btn" id="product-close-cart">&times;</span>
+        
+        <div id="product-cart-items-list" class="product-cart-items-list">
+            </div>
+        
+        <div class="product-cart-summary">
+            <p>Total Items: <span id="product-total-items">0</span></p>
+            <p class="product-total-price-row">Estimated Total Price: <span id="product-total-price">₹ 0.00</span></p>
+        </div>
+        
+        <button id="product-place-order-btn" class="product-place-order-btn">Place Order via WhatsApp / Call</button>
+    </div>
+</div>
+
+<script src="product.js"></script>
+
+
+    
+    
+    
+
+    <footer class="main-footer">
+      <div class="footer-wrapper">
+        <div class="footer-grid">
+          <div class="footer-col brand-info">
+            <h3>Ali Fitness Services</h3>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>
+              Dosti buliding<br />
+              Mumbra-Thane, 400612
+            </p>
+          </div>
+
+          <div class="footer-col contact-info">
+            <h3>Get In Touch</h3>
+            <p>
+              <i class="fas fa-phone"></i>
+              8897931335
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              gymsaprepartsandservices.com
+            </p>
+          </div>
+
+          <div class="footer-col social-links">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-whatsapp-square"></i
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Ali Fitness. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+        <script src="js/product.js"></script>
+        <!-- <script src="product_logic.js"></script> -->
+
+  </body>
+</html>
