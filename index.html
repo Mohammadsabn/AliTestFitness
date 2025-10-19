@@ -3,152 +3,294 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GymStore - Equipment & Services</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-/>
+    <title>
+      Ali Fitness Services - Commercial Gym Equipment Repair & Spares
+    </title>
 
+    <!-- Poppins Font for a clean, modern look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <!-- CSS File Link (Project Setup ke anusaar) -->
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <!-- ======================================= -->
+    <!-- HEADER & NAVIGATION -->
+    <!-- ======================================= -->
     <header>
       <div class="container">
-        <nav id="main-nav" class="nav-links">
+        <a href="#home" class="brand-name">
+          <i class="fas fa-dumbbell"></i> ALI FITNESS SERVICES
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links">
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="products.html">OEM Spares</a></li>
+            <!-- Link to the products page -->
             <li><a href="#about">About Us</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="#contact" class="cta-button">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
 
-        <div class="logo-group">
-          <button
-            class="menu-toggle"
-            aria-controls="main-nav"
-            aria-expanded="false"
-          >
-            <span class="hamburger"></span>
-          </button>
-
-          <a href="#home" class="brand-name">
-            GYM SPARE PARTS REPAIR AND SERVICES
-          </a>
-        </div>
+        <!-- Hamburger Menu for Mobile (CSS & JS handles the animation) -->
+        <button
+          class="menu-toggle"
+          aria-controls="main-navigation"
+          aria-expanded="false"
+        >
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </button>
       </div>
     </header>
 
     <main>
-      <section class="hero-section">
-        <div class="container">
-          <div>
-            <h1>KEEP YOUR MACHINES EARNING. MINIMIZE DOWNTIME.</h1>
+      <!-- ======================================= -->
+      <!-- 1. HERO SECTION -->
+      <!-- ======================================= -->
+      <section id="home" class="hero-section">
+        <div class="container hero-text">
+          <h1>
+            Expert Commercial
+            <span class="highlight-blue">Fitness Equipment</span> Services
+          </h1>
+          <p class="tagline">
+            Maximize gym uptime with reliable maintenance, repair, and certified
+            OEM spare parts sourcing across India.
+          </p>
+          <div class="hero-ctas">
+            <a href="repair_service.html" class="cta-button primary-cta"
+              >Request Emergency Repair</a
+            >
+            <a href="products.html" class="cta-button secondary-cta"
+              >Browse OEM Parts</a
+            >
           </div>
-          <div>
-            <p class="tagline">
-              The source for verified OEM spares and expert on-site repair,
-              delivering unmatched reliability across commercial fitness
-              equipment.
-            </p>
+        </div>
+      </section>
+
+      <!-- ======================================= -->
+      <!-- 2. TRUST BAR (STATS) -->
+      <!-- ======================================= -->
+      <section class="trust-bar">
+        <div class="container">
+          <div class="stat-item">
+            <span class="stat-value">12+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">250+</span>
+            <span class="stat-label">Gyms Serviced</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">99%</span>
+            <span class="stat-label">Uptime Rate</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">PAN India</span>
+            <span class="stat-label">Service Reach</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================= -->
+      <!-- 3. SERVICES SECTION -->
+      <!-- ======================================= -->
+      <section id="services" class="services-section">
+        <div class="container">
+          <h2 class="section-title">Our Specialized Services</h2>
+          <div class="services-grid">
+            <!-- Service Card 1: Emergency Repair -->
+            <a href="repair_service.html" class="service-link">
+              <div class="service-card">
+                <span class="icon-wrapper"><i class="fas fa-tools"></i></span>
+                <h3>Emergency Repair</h3>
+                <p>
+                  Fast response for critical breakdowns. We diagnose and fix
+                  issues on-site to minimize gym downtime.
+                </p>
+              </div>
+            </a>
+
+            <!-- Service Card 2: Annual Maintenance Contract -->
+            <a href="amc_plan.html" class="service-link">
+              <div class="service-card">
+                <span class="icon-wrapper">
+                  <i class="fas fa-calendar-check"></i>
+                </span>
+                <h3>AMC & Preventative Care</h3>
+                <p>
+                  Scheduled maintenance to ensure peak performance, extend
+                  equipment life, and reduce costly surprises.
+                </p>
+              </div>
+            </a>
+
+            <!-- Service Card 3: OEM Parts Sourcing -->
+            <a href="products.html" class="service-link">
+            <div class="service-card">
+              <span class="icon-wrapper"><i class="fas fa-microchip"></i></span>
+              <h3>OEM Spares & PCB Repair</h3>
+              <p>
+                Sourcing and installation of original parts, including complex
+                circuit board (PCB) repair services.
+              </p>
+            </div>
+
+            <!-- Service Card 4: Equipment Installation -->
+            <a href="installation_service.html" class="service-link">
+              <div class="service-card">
+                <span class="icon-wrapper">
+                  <i class="fas fa-truck-loading"></i>
+                </span>
+                <h3>Relocation & Installation</h3>
+                <p>
+                  Professional installation and calibration of new equipment,
+                  ensuring optimal setup for safe use.
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================= -->
+      <!-- 4. WHY US / ABOUT SECTION -->
+      <!-- ======================================= -->
+      <section id="about" class="about-section">
+        <div class="container">
+          <h2 class="section-title text-center">
+            Why Choose Ali Fitness Services?
+          </h2>
+          <div class="about-content">
+            <div class="text-side">
+              <h3 class="text-2xl font-bold mb-4 highlight-blue">
+                Driven by Precision, Focused on Uptime
+              </h3>
+              <p>
+                We understand that every hour your commercial machine is down,
+                you lose revenue and customer trust. Our team is trained by
+                industry veterans and equipped with advanced diagnostic tools to
+                handle complex electronic and mechanical failures across all
+                major brands (Life Fitness, Precor, Technogym, etc.).
+              </p>
+              <ul class="key-features">
+                <li>
+                  <i class="fas fa-check-circle"></i> Certified OEM Spares
+                  Guarantee
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Specialized
+                  PCB/Electronics Repair
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> 24-Hour Emergency Support
+                  Network
+                </li>
+              </ul>
+              <a href="installation_service.html" class="cta-button primary-cta"
+                >View Detailed Service Plans</a
+              >
+            </div>
+
+            <div class="image-side">
+              <!-- 
+                            FIXME: Jab aapko final image mile, toh 'src' ko badal dein:
+                            src="image/tech_repair.jpg" 
+                        -->
+              <img
+                src="https://placehold.co/450x300/0a0a0a/00FFFF?text=Specialist+PCB+Repair"
+                alt="Technician repairing a gym equipment PCB"
+                class="w-full h-auto object-cover rounded-xl shadow-2xl border-2 border-cyan-500 opacity-90 transition duration-300 hover:opacity-100 hover:shadow-cyan-400/50"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================= -->
+      <!-- 5. CONTACT SECTION -->
+      <!-- ======================================= -->
+      <section id="contact" class="contact-section">
+        <div class="container">
+          <h2 class="section-title">Get in Touch for Service</h2>
+          <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form">
+              <h3>Quick Service Request</h3>
+              <form action="#" method="POST">
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Email Address" required />
+                <input type="tel" placeholder="Phone Number" required />
+                <input
+                  type="text"
+                  placeholder="Machine Model & Brand (e.g., Precor TRM 885)"
+                />
+                <textarea
+                  rows="4"
+                  placeholder="Brief Description of Issue (e.g., Treadmill not starting, Error code E-04)"
+                ></textarea>
+                <button type="submit" class="cta-button primary-cta">
+                  Send Service Inquiry
+                </button>
+              </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-info-details">
+              <h3>Contact Information</h3>
+              <p><i class="fas fa-map-marker-alt"></i>Mumbra Thane India</p>
+              <p>
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:info@alifitnessservices.com"
+                  >info@alifitnessservices.com</a
+                >
+              </p>
+              <p>
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:+918879731335">+91 887 973 1335</a>
+              </p>
+
+              <h3 class="follow-heading">Follow Us</h3>
+              <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
-    <section class="services-section">
-      <div class="container">
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="icon-wrapper">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <h3>Verified OEM Spares</h3>
-            <p>
-              Access genuine Original Equipment Manufacturer parts for perfect
-              compatibility and performance.
-            </p>
-          </div>
 
-          <div class="service-card">
-            <div class="icon-wrapper">
-              <i class="fas fa-wrench"></i>
-            </div>
-            <h3>Expert On-Site Repair</h3>
-            <p>
-              Our certified technicians provide fast, reliable repairs directly
-              at your facility, minimizing disruption.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <div class="icon-wrapper">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3>Unmatched Reliability</h3>
-            <p>
-              Benefit from services designed to extend the lifespan and
-              efficiency of your commercial fitness machines.
-            </p>
-          </div>
-
-          <div class="service-card">
-            <div class="icon-wrapper">
-              <i class="fas fa-calendar-check"></i>
-            </div>
-            <h3>Preventive Maintenance</h3>
-            <p>
-              Scheduled check-ups to prevent breakdowns and ensure continuous,
-              smooth operation.
-            </p>
-          </div>
+    <!-- ======================================= -->
+    <!-- FOOTER -->
+    <!-- ======================================= -->
+    <footer class="main-footer">
+      <div class="footer-wrapper">
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 Ali Fitness Services. All rights reserved. |
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+          </p>
         </div>
       </div>
-    </section>
-    <footer class="main-footer">
-    <div class="footer-wrapper"> 
-        
-        <div class="footer-grid">
-            <div class="footer-col brand-info">
-                <h3>Ali Fitness Services</h3>
-                <p>
-                    <i class="fas fa-map-marker-alt"></i>
-                    Dosti buliding<br />
-                    Mumbra-Thane, 400612
-                </p>
-            </div>
+    </footer>
 
-            <div class="footer-col contact-info">
-                <h3>Get In Touch</h3>
-                <p>
-                    <i class="fas fa-phone"></i>
-                    8897931335
-                </p>
-                <p>
-                    <i class="fas fa-envelope"></i>
-                    gymsaprepartsandservices.com
-                </p>
-            </div>
-
-            <div class="footer-col social-links">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#" aria-label="LinkedIn"
-                        ><i class='fab fa-whatsapp-square'></i></a>
-                    <a href="#" aria-label="Facebook"
-                        ><i class="fab fa-facebook"></i
-                    ></a>
-                    <a href="#" aria-label="Twitter"
-                        ><i class='fab fa-instagram'></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 Ali Fitness. All rights reserved.</p>
-        </div>
-        
-    </div>
-</footer>
+    <!-- JavaScript File Link (Project Setup ke anusaar) -->
     <script src="js/script.js"></script>
   </body>
 </html>

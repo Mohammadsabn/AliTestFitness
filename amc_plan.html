@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMC Plans - Ali Fitness Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles (Matching Dark Theme) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        
+        :root {
+            --bg-deep-dark: #0a0a0a;
+            --text-light: #eeeeee;
+            --accent-blue: #00ffff;
+            --border-gray: #333333;
+            --primary-glow: rgba(0, 255, 255, 0.7);
+            --secondary-accent: #00b3b3;
+            --card-bg: #1a1a1a;
+        }
+
+        body {
+            background-color: var(--bg-deep-dark);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-gray);
+            box-shadow: 0 0 10px var(--primary-glow);
+            z-index: 20;
+        }
+
+        .brand-name {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+        }
+        
+        .highlight {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+        
+        .section-bg {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-gray);
+        }
+        
+        /* Pricing Card Styling */
+        .pricing-card {
+            background-color: #121212;
+            border: 2px solid var(--border-gray);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .pricing-card:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .premium-glow {
+            border-color: var(--accent-blue);
+            background-color: #0d0d0d;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header (Navbar) -->
+    <header class="shadow-lg sticky top-0">
+        <div class="container mx-auto flex justify-between items-center py-4 px-4">
+            <a href="index.html" class="brand-name text-2xl font-extrabold tracking-wider uppercase flex items-center">
+                <i class="fas fa-dumbbell mr-2"></i> ALI FITNESS SERVICES
+            </a>
+            <nav class="space-x-6 hidden md:block">
+                <a href="index.html#home" class="text-white hover:text-cyan-400 transition">Home</a>
+                <a href="index.html#services" class="text-white hover:text-cyan-400 transition">Services</a>
+                <a href="products.html" class="text-white hover:text-cyan-400 transition">Spare Parts Catalog</a>
+                <a href="index.html#contact" class="px-4 py-2 rounded-lg btn-primary text-sm font-semibold uppercase">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            
+            <!-- Hero Header for AMC -->
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 uppercase">
+                    ANNUAL <span class="highlight">MAINTENANCE</span> CONTRACTS
+                </h1>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto">
+                    Protect your investment. Ensure maximum uptime and longevity for your commercial fitness equipment with a proactive AMC.
+                </p>
+            </div>
+
+            <!-- Why AMC Section -->
+            <section id="why-amc" class="mb-16 section-bg p-8 rounded-xl">
+                <h2 class="text-4xl font-extrabold text-center mb-8 highlight uppercase">
+                    Why Choose an AMC?
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    
+                    <div class="p-4">
+                        <i class="fas fa-chart-line text-5xl highlight mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">Maximize Uptime</h3>
+                        <p class="text-gray-400 text-sm">Regular servicing prevents major failures, keeping your gym operational 24/7.</p>
+                    </div>
+                    
+                    <div class="p-4">
+                        <i class="fas fa-sack-dollar text-5xl highlight mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">Reduce Costs</h3>
+                        <p class="text-gray-400 text-sm">Proactive care is always cheaper than emergency repairs and equipment replacement.</p>
+                    </div>
+                    
+                    <div class="p-4">
+                        <i class="fas fa-shield-alt text-5xl highlight mb-3"></i>
+                        <h3 class="text-xl font-bold mb-2">Priority Service</h3>
+                        <p class="text-gray-400 text-sm">AMC clients receive guaranteed faster response times for any breakdown calls.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- AMC Plans Section -->
+            <section id="amc-plans" class="mb-16">
+                <h2 class="text-4xl font-extrabold text-center mb-10 text-white uppercase">
+                    OUR <span class="highlight">CUSTOMIZED</span> PLANS
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Plan 1: Basic Preventative -->
+                    <div class="pricing-card p-6 rounded-xl">
+                        <div class="text-center mb-6">
+                            <h3 class="text-3xl font-bold text-white mb-2">BRONZE</h3>
+                            <p class="text-lg text-gray-400">The Essential Check-up</p>
+                        </div>
+                        <div class="text-center mb-6 py-4 border-y border-gray-700">
+                            <p class="text-4xl font-extrabold highlight">
+                                Contact for Quote
+                            </p>
+                            <p class="text-sm text-gray-500">Starting price depends on equipment count.</p>
+                        </div>
+                        <ul class="space-y-4 text-gray-300 flex-grow mb-8">
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> <span class="font-semibold">2 Scheduled Visits</span> per year.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> Lubrication and alignment checks.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> Basic electrical and calibration check.</li>
+                            <li class="feature-item"><i class="fas fa-times mr-3 text-red-500"></i> Excludes: Cost of spare parts.</li>
+                            <li class="feature-item"><i class="fas fa-times mr-3 text-red-500"></i> Standard response time (48-72 hours).</li>
+                        </ul>
+                        <button onclick="contactForQuote('Bronze')" class="mt-auto w-full py-3 rounded-lg bg-gray-600 hover:bg-gray-700 text-white font-bold uppercase transition">
+                            Inquire about Bronze
+                        </button>
+                    </div>
+
+                    <!-- Plan 2: Silver Comprehensive (Recommended) -->
+                    <div class="pricing-card p-6 rounded-xl premium-glow relative">
+                        <!-- Badge -->
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-cyan-600 text-black px-4 py-1 rounded-full text-sm font-bold uppercase shadow-lg">
+                            Most Popular
+                        </div>
+                        <div class="text-center mb-6 mt-4">
+                            <h3 class="text-4xl font-extrabold text-white mb-2">SILVER</h3>
+                            <p class="text-lg text-gray-400">Comprehensive Coverage</p>
+                        </div>
+                        <div class="text-center mb-6 py-4 border-y border-cyan-500">
+                            <p class="text-5xl font-extrabold highlight">
+                                ₹ 15,000 / Year
+                            </p>
+                            <p class="text-sm text-gray-500">For a standard set of 5 machines.</p>
+                        </div>
+                        <ul class="space-y-4 text-gray-300 flex-grow mb-8">
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> <span class="font-semibold">4 Scheduled Visits</span> per year.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> Detailed wear and tear inspection.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> **Priority Response** (24-48 hours).</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> <span class="font-semibold">10% Discount</span> on all spare parts.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> Free software and minor adjustments.</li>
+                        </ul>
+                        <button onclick="contactForQuote('Silver')" class="mt-auto w-full py-3 rounded-lg btn-primary font-bold text-lg uppercase transition">
+                            Get Silver Plan
+                        </button>
+                    </div>
+                    
+                    <!-- Plan 3: Gold All-Inclusive -->
+                    <div class="pricing-card p-6 rounded-xl">
+                        <div class="text-center mb-6">
+                            <h3 class="text-3xl font-bold text-white mb-2">GOLD</h3>
+                            <p class="text-lg text-gray-400">Total Peace of Mind</p>
+                        </div>
+                        <div class="text-center mb-6 py-4 border-y border-gray-700">
+                            <p class="text-4xl font-extrabold highlight">
+                                Customized Quote
+                            </p>
+                            <p class="text-sm text-gray-500">Ideal for high-volume, multi-location facilities.</p>
+                        </div>
+                        <ul class="space-y-4 text-gray-300 flex-grow mb-8">
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> <span class="font-semibold">6 Scheduled Visits</span> per year (Bimonthly).</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> **VIP Response** (12-24 hours guaranteed).</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> <span class="font-semibold">20% Discount</span> on all spare parts.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> Priority access to new parts inventory.</li>
+                            <li class="feature-item"><i class="fas fa-check mr-3 text-green-500"></i> Quarterly performance reports.</li>
+                        </ul>
+                        <button onclick="contactForQuote('Gold')" class="mt-auto w-full py-3 rounded-lg bg-gray-600 hover:bg-gray-700 text-white font-bold uppercase transition">
+                            Inquire about Gold
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center section-bg p-8 rounded-xl">
+                    <h3 class="text-3xl font-bold highlight mb-4">Need a Plan for 10+ Machines?</h3>
+                    <p class="text-lg text-gray-300 mb-6">
+                        We specialize in custom fleet maintenance solutions for large gyms and commercial centers. Contact us for a bespoke quotation.
+                    </p>
+                    <a href="index.html#contact" class="px-8 py-3 rounded-lg btn-primary font-bold text-lg uppercase transition inline-flex items-center space-x-2">
+                        <i class="fas fa-calculator"></i> Request Custom Quote
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-[#050505] text-center py-4 mt-12 border-t border-gray-800">
+        <p class="text-gray-500 text-sm">&copy; 2025 Ali Fitness Services. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Simple function to direct users to contact form with pre-filled subject
+        function contactForQuote(planName) {
+            const subject = `AMC Quote Request - ${planName} Plan`;
+            const body = `Hello, I am interested in the ${planName} AMC plan. My facility has [Number] pieces of equipment. Please provide a detailed quote.`;
+            
+            // Redirect to the contact form section on the home page with pre-filled email
+            window.location.href = `index.html#contact?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</body>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Repair Service - Ali Fitness Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles (Matching Dark Theme) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        
+        :root {
+            --bg-deep-dark: #0a0a0a;
+            --text-light: #eeeeee;
+            --accent-blue: #00ffff;
+            --border-gray: #333333;
+            --primary-glow: rgba(0, 255, 255, 0.7);
+            --danger-red: #ff3333;
+        }
+
+        body {
+            background-color: var(--bg-deep-dark);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-gray);
+            box-shadow: 0 0 10px var(--primary-glow);
+            z-index: 20;
+        }
+
+        .brand-name {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger-red);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+        }
+        .btn-danger:hover {
+            background-color: #cc0000;
+        }
+        
+        .highlight {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+        
+        .section-bg {
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-gray);
+        }
+        
+        /* Process Step Styling */
+        .step-circle {
+            background-color: var(--accent-blue);
+            color: #000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+    </style>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header (Navbar) -->
+    <header class="shadow-lg sticky top-0">
+        <div class="container mx-auto flex justify-between items-center py-4 px-4">
+            <a href="index.html" class="brand-name text-2xl font-extrabold tracking-wider uppercase flex items-center">
+                <i class="fas fa-dumbbell mr-2"></i> ALI FITNESS SERVICES
+            </a>
+            <nav class="space-x-6 hidden md:block">
+                <a href="index.html#home" class="text-white hover:text-cyan-400 transition">Home</a>
+                <a href="index.html#services" class="text-white hover:text-cyan-400 transition">Services</a>
+                <a href="products.html" class="text-white hover:text-cyan-400 transition">Spare Parts Catalog</a>
+                <a href="index.html#contact" class="px-4 py-2 rounded-lg btn-primary text-sm font-semibold uppercase">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            
+            <!-- Hero Header for Repair -->
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 uppercase">
+                    <span class="highlight">EMERGENCY REPAIR</span> & BREAKDOWN SERVICE
+                </h1>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto">
+                    When the machine stops, get immediate service from our **Certified Technicians** with the **Fastest Response Time**.
+                </p>
+            </div>
+
+            <!-- Repair Process Section -->
+            <section id="process" class="mb-16">
+                <h2 class="text-4xl font-extrabold text-center mb-10 highlight uppercase">
+                    Our 3-Step Repair Process
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <!-- Step 1 -->
+                    <div class="text-center p-6 section-bg rounded-xl shadow-lg">
+                        <div class="step-circle mx-auto">1</div>
+                        <h3 class="text-2xl font-bold mb-3">Service Request</h3>
+                        <p class="text-gray-300">Contact us via phone, WhatsApp, or form with the machine's problem and model details.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="text-center p-6 section-bg rounded-xl shadow-lg">
+                        <div class="step-circle mx-auto">2</div>
+                        <h3 class="text-2xl font-bold mb-3">Diagnosis & Quote</h3>
+                        <p class="text-gray-300">Our technician will visit on-site, diagnose the issue, and provide a transparent estimate for repair and parts replacement.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="text-center p-6 section-bg rounded-xl shadow-lg">
+                        <div class="step-circle mx-auto">3</div>
+                        <h3 class="text-2xl font-bold mb-3">Fix & Test</h3>
+                        <p class="text-gray-300">Repair is completed using genuine spare parts, and the machine is fully tested under load before handover.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing and Guarantee Section -->
+            <section id="pricing" class="section-bg p-8 rounded-xl shadow-2xl border border-cyan-500/50">
+                <h2 class="text-4xl font-extrabold text-center mb-8 uppercase text-white">
+                    Transparent Pricing & Guarantee
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Pricing Structure -->
+                    <div>
+                        <h3 class="text-3xl font-bold highlight mb-4">Pricing Structure (Non-AMC Customers)</h3>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                                <span class="font-semibold flex items-center"><i class="fas fa-map-marker-alt mr-3 text-cyan-400"></i> Minimum Visiting Charge (V.C.)</span>
+                                <span class="font-extrabold text-white">₹ 500</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                                <span class="font-semibold flex items-center"><i class="fas fa-hammer mr-3 text-cyan-400"></i> Labour Charges</span>
+                                <span class="font-extrabold text-white">On Quote (Per Job)</span>
+                            </li>
+                            <li class="flex justify-between items-center">
+                                <span class="font-semibold flex items-center"><i class="fas fa-microchip mr-3 text-cyan-400"></i> Spare Parts Cost</span>
+                                <span class="font-extrabold text-white">Actual Cost (OEM/Original)</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-500 mt-4 italic">
+                            *The Visiting Charge (V.C.) is adjusted in the final bill after diagnosis. Parts and labour charges will be confirmed post-diagnosis.
+                        </p>
+                    </div>
+
+                    <!-- Guarantee and Response -->
+                    <div>
+                        <h3 class="text-3xl font-bold text-red-400 mb-4">Response Time & Warranty</h3>
+                        <p class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-stopwatch mr-3 text-red-500"></i> Guaranteed Response Time: 
+                            <span class="highlight ml-2">24 - 48 Hours</span>
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                            In key areas of Delhi NCR, Punjab, and Haryana, we guarantee a technician will be dispatched within 24 to 48 hours.
+                        </p>
+                        
+                        <p class="text-xl font-bold text-white mb-3 flex items-center">
+                            <i class="fas fa-shield-alt mr-3 text-cyan-400"></i> Repair Warranty:
+                            <span class="highlight ml-2">30 Days</span>
+                        </p>
+                        <p class="text-gray-300">
+                            A 30-day warranty is provided on our repair work and on all installed spare parts.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Final CTA -->
+            <div class="mt-16 text-center border-t border-gray-800 pt-12">
+                <h2 class="text-4xl font-extrabold mb-3">Need Immediate Repair?</h2>
+                <p class="text-gray-400 mb-6 max-w-3xl mx-auto">
+                    To request immediate service, call us or send a photo/video of the machine's problem via WhatsApp.
+                </p>
+                <a href="tel:+918879731335" class="px-8 py-4 rounded-lg btn-danger font-bold text-lg uppercase transition inline-flex items-center space-x-2 mr-4">
+                    <i class="fas fa-phone-alt"></i> Call Now: +91 88797 31335
+                </a>
+                <a href="https://wa.me/918879731335?text=I%20need%20Emergency%20Repair%20for%20my%20equipment." target="_blank" class="px-8 py-4 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold text-lg uppercase transition inline-flex items-center space-x-2">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Request
+                </a>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-[#050505] text-center py-4 mt-12 border-t border-gray-800">
+        <p class="text-gray-500 text-sm">&copy; 2025 Ali Fitness Services. All rights reserved.</p>
+    </footer>
+
+</body>

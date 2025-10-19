@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation & Relocation Service - Ali Fitness Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Styles (Matching Dark Theme) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        
+        :root {
+            --bg-deep-dark: #0a0a0a;
+            --text-light: #eeeeee;
+            --accent-blue: #00ffff;
+            --border-gray: #333333;
+            --primary-glow: rgba(0, 255, 255, 0.7);
+            --secondary-accent: #00b3b3;
+        }
+
+        body {
+            background-color: var(--bg-deep-dark);
+            color: var(--text-light);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid var(--border-gray);
+            box-shadow: 0 0 10px var(--primary-glow);
+            z-index: 20;
+        }
+
+        .brand-name {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+        }
+        
+        .highlight {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+        
+        .section-bg {
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-gray);
+        }
+        
+        /* Process Step Styling for Relocation */
+        .step-card {
+            background-color: #222222;
+            border-left: 5px solid var(--accent-blue);
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            border-left-color: var(--secondary-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+        }
+        .icon-circle {
+            color: var(--accent-blue);
+            text-shadow: 0 0 5px var(--primary-glow);
+        }
+
+    </style>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+</head>
+<body class="min-h-screen">
+
+    <!-- Header (Navbar) -->
+    <header class="shadow-lg sticky top-0">
+        <div class="container mx-auto flex justify-between items-center py-4 px-4">
+            <a href="index.html" class="brand-name text-2xl font-extrabold tracking-wider uppercase flex items-center">
+                <i class="fas fa-dumbbell mr-2"></i> ALI FITNESS SERVICES
+            </a>
+            <nav class="space-x-6 hidden md:block">
+                <a href="index.html#home" class="text-white hover:text-cyan-400 transition">Home</a>
+                <a href="index.html#services" class="text-white hover:text-cyan-400 transition">Services</a>
+                <a href="products.html" class="text-white hover:text-cyan-400 transition">Spare Parts Catalog</a>
+                <a href="index.html#contact" class="px-4 py-2 rounded-lg btn-primary text-sm font-semibold uppercase">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="py-16">
+        <div class="container mx-auto px-4">
+            
+            <!-- Hero Header for Installation & Relocation -->
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 uppercase">
+                    PROFESSIONAL <span class="highlight">INSTALLATION</span> & RELOCATION
+                </h1>
+                <p class="text-xl text-gray-400 max-w-4xl mx-auto">
+                    Ensure the longevity of your new equipment and the safe, damage-free transfer of existing machines.
+                </p>
+            </div>
+
+            <!-- Services Offered -->
+            <section id="services-offered" class="mb-16">
+                <h2 class="text-4xl font-extrabold text-center mb-10 highlight uppercase">
+                    OUR EXPERTISE
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- New Installation -->
+                    <div class="p-8 section-bg rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-hammer text-4xl icon-circle mr-4"></i>
+                            <h3 class="text-3xl font-bold">New Equipment Installation</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            The correct initial setup is crucial for avoiding future breakdowns. We handle the entire assembly process for all commercial brands.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                            <li><span class="font-semibold text-white">Precision Assembly:</span> Calibration of moving parts (belts, decks, cables).</li>
+                            <li><span class="font-semibold text-white">Load Testing:</span> Thorough testing of machines under load conditions.</li>
+                            <li><span class="font-semibold text-white">Full Configuration:</span> Setting up electronic consoles and network connections.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Relocation Service -->
+                    <div class="p-8 section-bg rounded-xl shadow-lg">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-truck-moving text-4xl icon-circle mr-4"></i>
+                            <h3 class="text-3xl font-bold">Gym Relocation & Shifting</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            We manage the complex logistics of moving heavy fitness equipment, from disassembly to final setup at the new location.
+                        </p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400 ml-4">
+                            <li><span class="font-semibold text-white">Safe Disassembly:</span> Careful dismantling and packaging of all components.</li>
+                            <li><span class="font-semibold text-white">Transport Guidance:</span> Ensuring equipment is correctly secured for transit.</li>
+                            <li><span class="font-semibold text-white">Reassembly & Calibration:</span> Installation and testing at the final site.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Relocation Process Section -->
+            <section id="relocation-process" class="mb-16">
+                <h2 class="text-4xl font-extrabold text-center mb-10 text-white uppercase">
+                    THE <span class="highlight">RELOCATION</span> ROADMAP
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    
+                    <!-- Step 1: Inspection -->
+                    <div class="step-card p-5 rounded-lg">
+                        <i class="fas fa-search text-3xl icon-circle mb-2"></i>
+                        <h4 class="text-xl font-bold mb-1">1. Site Inspection</h4>
+                        <p class="text-sm text-gray-400">Assessment of current and new locations for planning and logistics.</p>
+                    </div>
+                    
+                    <!-- Step 2: Disassembly -->
+                    <div class="step-card p-5 rounded-lg">
+                        <i class="fas fa-hand-scissors text-3xl icon-circle mb-2"></i>
+                        <h4 class="text-xl font-bold mb-1">2. Careful Disassembly</h4>
+                        <p class="text-sm text-gray-400">Machines are professionally broken down and labeled to prevent damage.</p>
+                    </div>
+                    
+                    <!-- Step 3: Transport Prep -->
+                    <div class="step-card p-5 rounded-lg">
+                        <i class="fas fa-box-open text-3xl icon-circle mb-2"></i>
+                        <h4 class="text-xl font-bold mb-1">3. Secure Packaging</h4>
+                        <p class="text-sm text-gray-400">Components are securely packed for transport (Note: Transportation is client responsibility).</p>
+                    </div>
+                    
+                    <!-- Step 4: Final Setup -->
+                    <div class="step-card p-5 rounded-lg">
+                        <i class="fas fa-check-circle text-3xl icon-circle mb-2"></i>
+                        <h4 class="text-xl font-bold mb-1">4. Reassembly & Test</h4>
+                        <p class="text-sm text-gray-400">Reinstallation, full testing, and handover at the new facility.</p>
+                    </div>
+                </div>
+                <p class="text-center text-sm text-gray-500 mt-6 italic">
+                    *Note: Ali Fitness Services handles the dismantling and reassembly of the equipment. Transportation logistics are typically managed by the client or a third-party mover, ensuring flexibility.
+                </p>
+            </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="section-bg p-8 rounded-xl shadow-2xl border border-cyan-500/50">
+                <h2 class="text-4xl font-extrabold text-center mb-8 uppercase text-white">
+                    QUOTATION AND BOOKING
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- General Pricing -->
+                    <div>
+                        <h3 class="text-3xl font-bold highlight mb-4">Pricing Guide</h3>
+                        <p class="text-lg text-gray-300 mb-4">
+                            Due to the variability in equipment size and travel distance, our services are quoted on a project basis.
+                        </p>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-center">
+                                <i class="fas fa-running mr-3 text-cyan-400"></i>
+                                <span class="font-semibold text-white">Treadmill/Large Cardio:</span> Quoted individually based on model complexity.
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-weight-hanging mr-3 text-cyan-400"></i>
+                                <span class="font-semibold text-white">Strength Machines:</span> Quoted based on type (multi-station, plate-loaded, selectorized).
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-map-marked-alt mr-3 text-cyan-400"></i>
+                                <span class="font-semibold text-white">Distance Charge:</span> Travel costs apply outside a specific radius (to be quoted).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Block -->
+                    <div class="text-center md:text-left">
+                        <p class="text-2xl font-extrabold text-white mb-6">
+                            Start your process by getting a free, non-binding quote tailored to your equipment list.
+                        </p>
+                        <a href="mailto:ali.fitness.services@email.com?subject=Quote%20Request:%20Installation%20or%20Relocation" class="px-8 py-4 rounded-lg btn-primary font-bold text-lg uppercase transition inline-flex items-center space-x-2">
+                            <i class="fas fa-envelope"></i> Request a Custom Quote
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Coverage Section -->
+            <div class="mt-16 text-center pt-12">
+                <h2 class="text-4xl font-extrabold mb-3 highlight">Wide Service Area</h2>
+                <p class="text-gray-400 mb-6 max-w-3xl mx-auto text-lg">
+                    We serve all major commercial gyms and fitness centers across **Delhi NCR, Haryana, Punjab,Mumbai, Banglore and key locations in North India.**
+                </p>
+                
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-[#050505] text-center py-4 mt-12 border-t border-gray-800">
+        <p class="text-gray-500 text-sm">&copy; 2025 Ali Fitness Services. All rights reserved.</p>
+    </footer>
+
+</body>
