@@ -13,7 +13,7 @@
       referrerpolicy="no-referrer"
     />
 
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/product.css" />
   </head>
   <body>
@@ -45,47 +45,55 @@
     </header>
 
     <main class="product-catalog-main">
-    <div class="product-container">
-        <h1 class="product-catalog-heading">Fitness Equipment Spares Catalog</h1>
-        
+      <div class="product-container">
+        <h1 class="product-catalog-heading">
+          Fitness Equipment Spares Catalog
+        </h1>
+
         <div class="product-search-bar">
-            <input type="text" id="product-catalog-search" placeholder="Search by Part Name or ID..." />
+          <input
+            type="text"
+            id="product-catalog-search"
+            placeholder="Search by Part Name or ID..."
+          />
         </div>
 
         <div class="product-grid" id="product-grid">
-            <p>Loading products...</p>
+          <p>Loading products...</p>
         </div>
-    </div>
-</main>
+      </div>
+    </main>
 
-<button class="product-floating-cart-btn" id="product-open-cart" aria-label="Open Shopping Cart">
-    <i class="fas fa-shopping-cart"></i> 
-    <span id="product-cart-count">0</span>
-</button>
+    <button
+      class="product-floating-cart-btn"
+      id="product-open-cart"
+      aria-label="Open Shopping Cart"
+    >
+      <i class="fas fa-shopping-cart"></i>
+      <span id="product-cart-count">0</span>
+    </button>
 
-<div class="product-modal" id="product-cart-modal">
-    <div class="product-modal-content">
+    <div class="product-modal" id="product-cart-modal">
+      <div class="product-modal-content">
         <h2 class="product-modal-title">Your Quotation Cart</h2>
         <span class="product-close-btn" id="product-close-cart">&times;</span>
-        
-        <div id="product-cart-items-list" class="product-cart-items-list">
-            </div>
-        
+
+        <div id="product-cart-items-list" class="product-cart-items-list"></div>
+
         <div class="product-cart-summary">
-            <p>Total Items: <span id="product-total-items">0</span></p>
-            <p class="product-total-price-row">Estimated Total Price: <span id="product-total-price">₹ 0.00</span></p>
+          <p>Total Items: <span id="product-total-items">0</span></p>
+          <p class="product-total-price-row">
+            Estimated Total Price: <span id="product-total-price">₹ 0.00</span>
+          </p>
         </div>
-        
-        <button id="product-place-order-btn" class="product-place-order-btn">Place Order via WhatsApp / Call</button>
+
+        <button id="product-place-order-btn" class="product-place-order-btn">
+          Place Order via WhatsApp / Call
+        </button>
+      </div>
     </div>
-</div>
 
-<script src="product.js"></script>
-
-
-    
-    
-    
+    <!-- <script src="product.js"></script> -->
 
     <footer class="main-footer">
       <div class="footer-wrapper">
@@ -133,8 +141,7 @@
       </div>
     </footer>
     <script src="js/script.js"></script>
-        <script src="js/product.js"></script>
-        <!-- <script src="product_logic.js"></script> -->
-
+    <script src="js/product.js"></script>
+    <!-- <script src="product_logic.js"></script> -->
   </body>
 </html>
