@@ -5,6 +5,7 @@
 
 // --- CONFIGURATION ---
 // IMPORTANT: WhatsApp requires the number in international format (e.g., 91xxxxxxxxxx) without '+' or leading zeros.
+// Call dialing typically uses the '+' prefix.
 const CONTACT_NUMBER = "918897931335"; // Your WhatsApp/Call number updated with country code 91
 
 // Data Array: Using your provided data structure
@@ -230,7 +231,6 @@ function renderProductGrid(products) {
  */
 function placeOrderWhatsApp() {
     if (cartItems.length === 0) {
-        // Button will be disabled, but a fallback check is good
         return; 
     }
     
@@ -260,7 +260,7 @@ function placeOrderWhatsApp() {
 
     message += `--- Total Estimated Price: ${formatPrice(finalPrice)} ---\n\n*Please confirm stock and final price.* Thank you!`;
 
-    // WhatsApp URL now uses the international formatted CONTACT_NUMBER
+    // WhatsApp URL uses the international formatted CONTACT_NUMBER (e.g., 91xxxxxxxxxx)
     const whatsappUrl = `https://wa.me/${CONTACT_NUMBER}?text=${encodeURIComponent(message)}`;
     window.location.href = whatsappUrl;
 }
@@ -269,8 +269,8 @@ function placeOrderWhatsApp() {
  * Direct Call shuru karta hai.
  */
 function placeOrderCall() {
-    // Direct call link
-    window.location.href = `tel:+${CONTACT_NUMBER}`; // Added '+' for standard telephone dialing protocol
+    // Call link should use the '+' prefix for universal mobile dialing (e.g., tel:+918897931335)
+    window.location.href = `tel:+${CONTACT_NUMBER}`; 
 }
 
 
@@ -317,7 +317,6 @@ function setupGlobalListeners() {
                 item.dimensions[dimKey] = value;
                 
                 // SIRF Summary update karte hain, poora cart re-render NAHI karte
-                // Taki user input field se focus na kho de
                 updateCartDisplay(); 
             }
         }
@@ -326,18 +325,17 @@ function setupGlobalListeners() {
     // 3. Open/Close Modal Logic
     elements.openCartBtn.addEventListener('click', () => {
         renderCart(); 
-        // Use class for animation
-        elements.modal.classList.add('product-modal-show');
+        elements.modal.style.display = 'block'; // Inline style for simple show/hide
     });
     
     elements.closeCartBtn.addEventListener('click', () => {
-        elements.modal.classList.remove('product-modal-show');
+        elements.modal.style.display = 'none';
     });
 
     // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         if (e.target === elements.modal) {
-            elements.modal.classList.remove('product-modal-show');
+            elements.modal.style.display = 'none';
         }
     });
 
