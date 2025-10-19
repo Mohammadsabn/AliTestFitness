@@ -4,7 +4,8 @@
  */
 
 // --- CONFIGURATION ---
-const CONTACT_NUMBER = "8897931335"; // Your WhatsApp/Call number set here
+// IMPORTANT: WhatsApp requires the number in international format (e.g., 91xxxxxxxxxx) without '+' or leading zeros.
+const CONTACT_NUMBER = "918897931335"; // Your WhatsApp/Call number updated with country code 91
 
 // Data Array: Using your provided data structure
 let productsData = [
@@ -259,6 +260,7 @@ function placeOrderWhatsApp() {
 
     message += `--- Total Estimated Price: ${formatPrice(finalPrice)} ---\n\n*Please confirm stock and final price.* Thank you!`;
 
+    // WhatsApp URL now uses the international formatted CONTACT_NUMBER
     const whatsappUrl = `https://wa.me/${CONTACT_NUMBER}?text=${encodeURIComponent(message)}`;
     window.location.href = whatsappUrl;
 }
@@ -268,7 +270,7 @@ function placeOrderWhatsApp() {
  */
 function placeOrderCall() {
     // Direct call link
-    window.location.href = `tel:${CONTACT_NUMBER}`;
+    window.location.href = `tel:+${CONTACT_NUMBER}`; // Added '+' for standard telephone dialing protocol
 }
 
 
@@ -324,17 +326,18 @@ function setupGlobalListeners() {
     // 3. Open/Close Modal Logic
     elements.openCartBtn.addEventListener('click', () => {
         renderCart(); 
-        elements.modal.style.display = 'block';
+        // Use class for animation
+        elements.modal.classList.add('product-modal-show');
     });
     
     elements.closeCartBtn.addEventListener('click', () => {
-        elements.modal.style.display = 'none';
+        elements.modal.classList.remove('product-modal-show');
     });
 
     // Close modal when clicking outside
     window.addEventListener('click', (e) => {
         if (e.target === elements.modal) {
-            elements.modal.style.display = 'none';
+            elements.modal.classList.remove('product-modal-show');
         }
     });
 
