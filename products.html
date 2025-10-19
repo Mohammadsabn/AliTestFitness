@@ -44,56 +44,75 @@
       </div>
     </header>
 
-    <main class="product-catalog-main">
-      <div class="product-container">
-        <h1 class="product-catalog-heading">
-          Fitness Equipment Spares Catalog
-        </h1>
+     <main class="product-catalog-main py-10">
+        <div class="product-container max-w-7xl mx-auto p-4">
+            <!-- User ID Display ke liye placeholder -->
+            <p class="text-center text-gray-400 mb-6">User ID: <span id="user-id-display" class="font-mono text-xs text-cyan-400"></span></p>
 
-        <div class="product-search-bar">
-          <input
-            type="text"
-            id="product-catalog-search"
-            placeholder="Search by Part Name or ID..."
-          />
-        </div>
+            <h1 class="product-catalog-heading text-4xl text-center mb-8 font-extrabold text-orange-400">
+                Fitness Equipment Spares Catalog
+            </h1>
 
-        <div class="product-grid" id="product-grid">
-          <p>Loading products...</p>
+            <div class="product-search-bar flex justify-center mb-10">
+                <input
+                    type="text"
+                    id="product-catalog-search"
+                    placeholder="Search by Part Name or ID..."
+                    class="w-full max-w-xl p-3 border rounded-lg bg-gray-700 border-gray-600 text-white focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
+                />
+            </div>
+
+            <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+                <!-- Products yahan JavaScript se load honge -->
+                <p class="col-span-full text-center text-gray-400 p-10">Loading products...</p>
+            </div>
         </div>
-      </div>
     </main>
+    <!-- END MAIN CONTENT -->
 
+    <!-- Floating Cart Button -->
     <button
-      class="product-floating-cart-btn"
-      id="product-open-cart"
-      aria-label="Open Shopping Cart"
+        class="product-floating-cart-btn fixed bottom-6 right-6 p-4 rounded-full bg-orange-500 text-white shadow-lg"
+        id="product-open-cart"
+        aria-label="Open Shopping Cart"
     >
-      <i class="fas fa-shopping-cart"></i>
-      <span id="product-cart-count">0</span>
+        <i class="fas fa-shopping-cart text-xl"></i>
+        <span id="product-cart-count" class="absolute top-0 right-0 bg-cyan-500 text-xs rounded-full h-5 w-5 flex items-center justify-center -mt-1 -mr-1">0</span>
     </button>
 
-    <div class="product-modal" id="product-cart-modal">
-      <div class="product-modal-content">
-        <h2 class="product-modal-title">Your Quotation Cart</h2>
-        <span class="product-close-btn" id="product-close-cart">&times;</span>
+    <!-- Cart Modal (Dialogue Box) -->
+    <div class="product-modal fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center" id="product-cart-modal">
+        <div class="product-modal-content bg-gray-800 p-6 rounded-xl shadow-2xl relative w-11/12 max-w-2xl">
+            <h2 class="product-modal-title text-2xl font-bold text-orange-400 mb-4 text-center">Your Quotation Cart</h2>
+            
+            <span class="product-close-btn absolute top-3 right-5 text-4xl text-white cursor-pointer hover:text-cyan-400" id="product-close-cart">&times;</span>
 
-        <div id="product-cart-items-list" class="product-cart-items-list"></div>
+            <div id="product-cart-items-list" class="product-cart-items-list max-h-96 overflow-y-auto mb-4 border-b border-gray-600 pb-4">
+                <!-- Cart items yahan render honge -->
+                <p class="text-center text-gray-400">Cart items list placeholder.</p>
+            </div>
 
-        <div class="product-cart-summary">
-          <p>Total Items: <span id="product-total-items">0</span></p>
-          <p class="product-total-price-row">
-            Estimated Total Price: <span id="product-total-price">₹ 0.00</span>
-          </p>
+            <div class="product-cart-summary text-white border-t border-gray-700 pt-4">
+                <p class="flex justify-between text-lg mb-2">Total Items: <span id="product-total-items" class="font-bold text-cyan-400">0</span></p>
+                <p class="product-total-price-row flex justify-between text-2xl font-extrabold text-orange-400">
+                    Estimated Total Price: <span id="product-total-price">₹ 0.00</span>
+                </p>
+            </div>
+
+            <!-- Order Actions (WhatsApp and Call) -->
+            <div class="product-order-actions flex gap-4 mt-6">
+                <button id="product-place-whatsapp-btn" class="product-place-order-btn product-whatsapp-btn flex-1 p-3 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition duration-200">
+                    <i class="fab fa-whatsapp mr-2"></i> Order (WhatsApp)
+                </button>
+                <button id="product-place-call-btn" class="product-place-order-btn product-call-btn flex-1 p-3 rounded-lg bg-cyan-600 text-white font-semibold hover:bg-cyan-700 transition duration-200">
+                    <i class="fas fa-phone mr-2"></i> Order (Call)
+                </button>
+            </div>
+
         </div>
-
-        <button id="product-place-order-btn" class="product-place-order-btn">
-          Place Order via WhatsApp / Call
-        </button>
-      </div>
     </div>
 
-    <!-- <script src="product.js"></script> -->
+    
 
     <footer class="main-footer">
       <div class="footer-wrapper">

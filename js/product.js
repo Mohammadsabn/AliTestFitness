@@ -1,163 +1,242 @@
-// Data Array: Yahan aap apne products ki details daalenge
-let products = [
+/**
+ * Product Catalog Logic: Handles Cart operations (Add, Quantity, Delete),
+ * Search, and the final order placement via WhatsApp/Call.
+ */
+
+// --- CONFIGURATION ---
+const CONTACT_NUMBER = "8897931335"; // Your WhatsApp/Call number set here
+
+// Data Array: Using your provided data structure
+let productsData = [
     { id: 101, name: "Treadmill Running Belt", price: 4500, img: 'image/PRODUCT_IMAGE/sample_treadmill.jfif', hasDims: true, dimLabel: 'L x W (mm)' },
     { id: 102, name: "Motor Controller PCB (5HP)", price: 7800, img: 'image/PRODUCT_IMAGE/motor.jfif', hasDims: false, dimLabel: '' },
     { id: 103, name: "Incline Motor Actuator", price: 3200, img: 'image/PRODUCT_IMAGE/sample_treadmill.jfif', hasDims: false, dimLabel: '' },
-    { id: 103, name: "Incline Motor Actuator", price: 3200, img: 'image/PRODUCT_IMAGE/sample_treadmill.jfif', hasDims: false, dimLabel: '' },
-
-    // 🛑 Yahan aur products add karein 🛑
+    { id: 104, name: "Hydraulic Tension Spring", price: 1500, img: 'image/PRODUCT_IMAGE/sample_spring.jfif', hasDims: true, dimLabel: 'Length (mm)' }, 
 ];
 
-let cart = [];
-const phoneNumber = "8897931335"; // 🛑 Apna WhatsApp/Call number set karein 🛑
+let cartItems = [];
 
 // DOM Element References (All IDs are prefixed with 'product-')
 const elements = {
-    grid: document.getElementById('product-grid'),
-    modal: document.getElementById('product-cart-modal'),
-    cartList: document.getElementById('product-cart-items-list'),
-    totalPriceSpan: document.getElementById('product-total-price'),
-    totalItemsSpan: document.getElementById('product-total-items'),
-    cartCountSpan: document.getElementById('product-cart-count'),
-    openCartBtn: document.getElementById('product-open-cart'),
-    closeCartBtn: document.getElementById('product-close-cart'),
-    placeOrderBtn: document.getElementById('product-place-order-btn'),
-    catalogSearchInput: document.getElementById('product-catalog-search')
+    grid: null,
+    modal: null,
+    cartList: null,
+    totalPriceSpan: null,
+    totalItemsSpan: null,
+    cartCountSpan: null,
+    openCartBtn: null,
+    closeCartBtn: null,
+    whatsappBtn: null,
+    callBtn: null,
+    catalogSearchInput: null
 };
 
+// --- UTILITY FUNCTIONS ---
 
-// 1. Initial Product Rendering
-function renderProducts(filteredProducts = products) {
-    if (filteredProducts.length === 0) {
-        elements.grid.innerHTML = '<p class="no-results">No products found matching your search.</p>';
-        return;
+/**
+ * Price ko Indian Rupee format mein change karta hai.
+ * @param {number} amount
+ * @returns {string} Formatted price string.
+ */
+function formatPrice(amount) {
+    if (amount === null || typeof amount === 'undefined') {
+        return '₹ 0.00';
     }
-
-    elements.grid.innerHTML = filteredProducts.map(p => `
-        <div class="product-card" data-id="${p.id}">
-            <img src="${p.img}" alt="${p.name}" class="product-image">
-            <h4 class="product-name">${p.name}</h4>
-            <p class="product-price">Price: ₹ ${p.price.toFixed(2)}</p>
-            ${p.hasDims ? `<p class="product-dim-note">Dimensions: ${p.dimLabel} required</p>` : ''}
-            <button class="product-add-to-cart-btn" onclick="addToCart(${p.id})">Add to Quote</button>
-        </div>
-    `).join('');
+    // Price ko fixed 2 decimal places tak rakhte hain
+    return `₹ ${amount.toFixed(2)}`;
 }
 
+// --- CORE CART LOGIC ---
 
-// 2. Add to Cart Logic
-window.addToCart = (productId) => {
-    const product = products.find(p => p.id === productId);
-    const existingItem = cart.find(item => item.id === productId);
+/**
+ * Item ko Cart mein add karta hai.
+ * @param {number} productId
+ */
+function addToCart(productId) {
+    const product = productsData.find(p => p.id === productId);
+
+    if (!product) return;
+
+    const existingItem = cartItems.find(item => item.id === productId);
 
     if (existingItem) {
-        existingItem.quantity++;
+        existingItem.quantity += 1;
     } else {
-        cart.push({ 
+        cartItems.push({ 
             ...product, 
-            quantity: 1, 
-            // Default dimensions for custom parts (L, W, H, Weight)
-            dimensions: product.hasDims ? { L: 0, W: 0, H: 0, Weight: 0 } : null 
+            quantity: 1,
+            // Default dimensions for custom parts (L, W, Weight)
+            dimensions: product.hasDims ? { L: 0, W: 0, Weight: 0 } : null 
         });
     }
+
     updateCartDisplay();
-    elements.modal.classList.add('product-modal-show');
-};
+}
 
-// 3. Update Quantity and Dims (Global functions)
-window.updateItemQuantity = (id, newQuantity) => {
-    const item = cart.find(i => i.id === id);
-    const qty = parseInt(newQuantity) || 1;
-    if (item && qty > 0) {
-        item.quantity = qty;
-        updateCartDisplay();
-    }
-};
+/**
+ * Item ki Quantity ko update karta hai.
+ * @param {number} productId
+ * @param {number} change (+1 or -1)
+ */
+function updateQuantity(productId, change) {
+    const item = cartItems.find(item => item.id === productId);
+    if (!item) return;
 
-window.updateItemDims = (id, dimKey, value) => {
-    const item = cart.find(i => i.id === id);
-    if (item && item.dimensions) {
-        item.dimensions[dimKey] = parseFloat(value) || 0;
-        updateCartDisplay();
-    }
-};
+    item.quantity += change;
 
-window.removeItem = (id) => {
-    cart = cart.filter(item => item.id !== id);
-    updateCartDisplay();
-};
-
-
-// 4. Update Cart Display and Total Price
-function updateCartDisplay() {
-    let totalPrice = 0;
-    let totalItems = 0;
-
-    if (cart.length === 0) {
-        elements.cartList.innerHTML = '<p style="text-align:center;">Your cart is empty. Please add spares.</p>';
+    if (item.quantity <= 0) {
+        // Agar quantity 0 ya usse kam ho gayi, toh item ko delete kar do
+        removeItem(productId);
     } else {
-        elements.cartList.innerHTML = cart.map(item => {
+        renderCart();
+        updateCartDisplay();
+    }
+}
+
+/**
+ * Item ko Cart se delete karta hai.
+ * @param {number} productId
+ */
+function removeItem(productId) {
+    const initialLength = cartItems.length;
+    cartItems = cartItems.filter(item => item.id !== productId);
+
+    if (cartItems.length < initialLength) {
+        renderCart();
+        updateCartDisplay();
+    }
+}
+
+/**
+ * Cart ke items ko calculate karta hai aur total price nikalta hai.
+ */
+function calculateCartSummary() {
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    cartItems.forEach(item => {
+        totalItems += item.quantity;
+        // Estimate price calculation
+        totalPrice += item.price * item.quantity; 
+    });
+
+    return { totalItems, totalPrice };
+}
+
+// --- RENDERING AND UI UPDATES ---
+
+/**
+ * Cart modal ke andar ki list ko render karta hai.
+ */
+function renderCart() {
+    const summary = calculateCartSummary();
+
+    // Agar cart khali hai
+    if (cartItems.length === 0) {
+        elements.cartList.innerHTML = '<p style="text-align: center; color: #aaa; margin-top: 30px;">Aapki Quotation Cart Khali Hai. Kuch Parts Add Karein!</p>';
+        if (elements.whatsappBtn) elements.whatsappBtn.disabled = true;
+        if (elements.callBtn) elements.callBtn.disabled = true;
+    } else {
+        elements.cartList.innerHTML = cartItems.map(item => {
             const itemTotal = item.quantity * item.price;
-            totalPrice += itemTotal;
-            totalItems += item.quantity;
             
-            // Render Dimension Inputs
+            // Render Dimension Inputs only if hasDims is true
             let dimInputs = '';
             if (item.dimensions) {
+                const dims = item.dimensions;
                 dimInputs = `
                     <div class="product-dim-inputs">
-                        <label>L:</label><input type="number" value="${item.dimensions.L}" oninput="updateItemDims(${item.id}, 'L', this.value)">
-                        <label>W:</label><input type="number" value="${item.dimensions.W}" oninput="updateItemDims(${item.id}, 'W', this.value)">
-                        <label>Wt(kg):</label><input type="number" value="${item.dimensions.Weight}" oninput="updateItemDims(${item.id}, 'Weight', this.value)">
+                        <label>L:</label><input type="number" min="0" value="${dims.L}" data-dim-key="L" data-id="${item.id}" class="dim-input">
+                        <label>W:</label><input type="number" min="0" value="${dims.W}" data-dim-key="W" data-id="${item.id}" class="dim-input">
+                        <label>Wt(kg):</label><input type="number" min="0" value="${dims.Weight}" data-dim-key="Weight" data-id="${item.id}" class="dim-input">
                     </div>
                 `;
             }
 
             return `
-                <div class="product-cart-item">
+                <div class="product-cart-item" data-id="${item.id}">
                     <div class="product-item-details">
-                        <p><strong>${item.name}</strong> (₹ ${item.price.toFixed(2)})</p>
+                        <span class="product-item-title">${item.name} (ID: ${item.id})</span>
+                        <span class="product-item-dimensions">${item.dimLabel || 'No specific dimension needed'}</span>
                         ${dimInputs}
-                        <p class="product-item-price-total">Item Total: ₹ ${itemTotal.toFixed(2)}</p>
                     </div>
-                    <div class="product-item-controls">
-                        <input type="number" min="1" value="${item.quantity}" oninput="updateItemQuantity(${item.id}, this.value)">
-                        <button onclick="removeItem(${item.id})" title="Remove Item">&times;</button>
+                    
+                    <div class="product-item-quantity">
+                        <button class="quantity-minus" data-id="${item.id}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-plus" data-id="${item.id}">+</button>
                     </div>
+                    
+                    <!-- Total price for the specific item -->
+                    <div class="product-item-price">${formatPrice(itemTotal)}</div>
+
+                    <!-- Remove button -->
+                    <button class="product-item-remove" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
                 </div>
             `;
         }).join('');
+        
+        if (elements.whatsappBtn) elements.whatsappBtn.disabled = false;
+        if (elements.callBtn) elements.callBtn.disabled = false;
     }
 
-    elements.totalPriceSpan.textContent = `₹ ${totalPrice.toFixed(2)}`;
-    elements.totalItemsSpan.textContent = totalItems;
-    elements.cartCountSpan.textContent = totalItems;
+    // Summary update
+    elements.totalItemsSpan.textContent = summary.totalItems;
+    elements.totalPriceSpan.textContent = formatPrice(summary.totalPrice);
 }
 
+/**
+ * Floating cart count ko update karta hai.
+ */
+function updateCartDisplay() {
+    const summary = calculateCartSummary();
+    elements.cartCountSpan.textContent = summary.totalItems;
+    
+    // Total price bhi update ho jayega jab cart open ho
+    if (elements.totalPriceSpan) {
+        elements.totalPriceSpan.textContent = formatPrice(summary.totalPrice);
+    }
+}
 
-// 5. WhatsApp / Call Order Logic
-function placeOrder() {
-    if (cart.length === 0) {
-        alert("Your cart is empty. Add products first.");
+/**
+ * Product grid ko render karta hai.
+ * @param {Array<Object>} products List of products to display.
+ */
+function renderProductGrid(products) {
+    if (products.length === 0) {
+        elements.grid.innerHTML = '<p class="no-results">No products found matching your search.</p>';
         return;
     }
-
-    const action = prompt("How would you like to proceed?\n\n1. Send via WhatsApp (Recommended)\n2. Call directly");
-
-    if (action === '1') {
-        sendOrderViaWhatsApp();
-    } else if (action === '2') {
-        window.location.href = `tel:${phoneNumber}`; 
-    } else {
-        alert("Action cancelled.");
-    }
+    
+    elements.grid.innerHTML = products.map(product => `
+        <div class="product-card">
+            <img src="${product.img}" alt="${product.name}" class="product-image" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e5e7eb/333?text=Image+Not+Found'">
+            <h2 class="product-title">${product.name}</h2>
+            <p class="product-id">Part ID: ${product.id}</p>
+            <p class="product-dimensions">${product.dimLabel ? `Requires: ${product.dimLabel}` : 'Standard part'}</p>
+            <p class="product-price">${formatPrice(product.price)}</p>
+            <!-- Use class 'add-to-cart-btn' for event delegation -->
+            <button class="add-to-cart-btn" data-id="${product.id}">Add to Quote</button>
+        </div>
+    `).join('');
 }
 
-function sendOrderViaWhatsApp() {
+
+// --- ORDER ACTION HANDLERS (Direct Call/WhatsApp) ---
+
+/**
+ * WhatsApp order message generate karta hai aur link par redirect karta hai.
+ */
+function placeOrderWhatsApp() {
+    if (cartItems.length === 0) {
+        // Button will be disabled, but a fallback check is good
+        return; 
+    }
+    
     let message = `Hello Ali Fitness Services,\n\n*I need a quote for the following spare parts:*\n\n`;
     let finalPrice = 0;
     
-    cart.forEach((item, index) => {
+    cartItems.forEach((item, index) => {
         const itemTotal = item.quantity * item.price;
         finalPrice += itemTotal;
         
@@ -165,50 +244,135 @@ function sendOrderViaWhatsApp() {
         if (item.dimensions) {
             const dims = item.dimensions;
             const dimArray = [];
+            // Only include dimensions if they are greater than 0
             if (dims.L > 0) dimArray.push(`L: ${dims.L}`);
             if (dims.W > 0) dimArray.push(`W: ${dims.W}`);
             if (dims.Weight > 0) dimArray.push(`Wt: ${dims.Weight}kg`);
 
             if (dimArray.length > 0) {
-                 dimText = ` [${dimArray.join(', ')}]`;
+                dimText = ` [Dims: ${dimArray.join(', ')}]`;
             }
         }
 
-        message += `${index + 1}. *${item.name}*\n   - Qty: ${item.quantity}${dimText}\n   - Est. Total: ₹ ${itemTotal.toFixed(2)}\n\n`;
+        message += `${index + 1}. *${item.name}* (ID: ${item.id})\n  - Qty: ${item.quantity}${dimText}\n  - Est. Total: ${formatPrice(itemTotal)}\n\n`;
     });
 
-    message += `--- Total Est. Price: ₹ ${finalPrice.toFixed(2)} ---\n\n*Please confirm stock and final price.* Thank you!`;
+    message += `--- Total Estimated Price: ${formatPrice(finalPrice)} ---\n\n*Please confirm stock and final price.* Thank you!`;
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    const whatsappUrl = `https://wa.me/${CONTACT_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.location.href = whatsappUrl;
+}
+
+/**
+ * Direct Call shuru karta hai.
+ */
+function placeOrderCall() {
+    // Direct call link
+    window.location.href = `tel:${CONTACT_NUMBER}`;
 }
 
 
-// 6. Search Functionality
-elements.catalogSearchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    const filtered = products.filter(p => 
-        p.name.toLowerCase().includes(query) || 
-        p.id.toString().includes(query)
-    );
-    renderProducts(filtered);
-});
+// --- GLOBAL EVENT LISTENERS & INITIALIZATION ---
 
-
-// 7. Initialisation and Event Listeners
-document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
-    updateCartDisplay();
-
-    // Modal Events
-    elements.openCartBtn.onclick = () => elements.modal.classList.add('product-modal-show');
-    elements.closeCartBtn.onclick = () => elements.modal.classList.remove('product-modal-show');
-    elements.placeOrderBtn.onclick = placeOrder;
-    
-    // Close modal on outside click
-    window.onclick = (event) => {
-        if (event.target === elements.modal) {
-            elements.modal.classList.remove('product-modal-show');
+function setupGlobalListeners() {
+    // 1. Add to Cart Button Logic (Using Delegation)
+    elements.grid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('add-to-cart-btn')) {
+            const id = parseInt(e.target.dataset.id);
+            addToCart(id);
         }
-    };
-});
+    });
+
+    // 2. Cart Modal Controls (Quantity, Remove, Dimensions)
+    elements.cartList.addEventListener('click', (e) => {
+        const id = parseInt(e.target.dataset.id);
+
+        // Quantity Plus/Minus
+        if (e.target.classList.contains('quantity-plus')) {
+            updateQuantity(id, 1);
+        } else if (e.target.classList.contains('quantity-minus')) {
+            updateQuantity(id, -1);
+        } 
+        
+        // Remove Item
+        else if (e.target.closest('.product-item-remove')) {
+            const removeBtn = e.target.closest('.product-item-remove');
+            removeItem(parseInt(removeBtn.dataset.id));
+        }
+    });
+    
+    // Dimension Input Handling (Using Delegation)
+    elements.cartList.addEventListener('input', (e) => {
+        if (e.target.classList.contains('dim-input')) {
+            const id = parseInt(e.target.dataset.id);
+            const dimKey = e.target.dataset.dimKey;
+            // Value ko float mein parse karte hain, agar invalid ho toh 0
+            const value = parseFloat(e.target.value) || 0; 
+            
+            const item = cartItems.find(i => i.id === id);
+            if (item && item.dimensions) {
+                // Dimension ko data model (cartItems) mein update karte hain
+                item.dimensions[dimKey] = value;
+                
+                // SIRF Summary update karte hain, poora cart re-render NAHI karte
+                // Taki user input field se focus na kho de
+                updateCartDisplay(); 
+            }
+        }
+    });
+    
+    // 3. Open/Close Modal Logic
+    elements.openCartBtn.addEventListener('click', () => {
+        renderCart(); 
+        elements.modal.style.display = 'block';
+    });
+    
+    elements.closeCartBtn.addEventListener('click', () => {
+        elements.modal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target === elements.modal) {
+            elements.modal.style.display = 'none';
+        }
+    });
+
+    // 4. Order Buttons Logic
+    elements.whatsappBtn.addEventListener('click', placeOrderWhatsApp);
+    elements.callBtn.addEventListener('click', placeOrderCall);
+    
+    // 5. Search Logic
+    elements.catalogSearchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const filteredProducts = productsData.filter(p => 
+            p.name.toLowerCase().includes(query) || 
+            p.id.toString().includes(query)
+        );
+        renderProductGrid(filteredProducts);
+    });
+}
+
+function initializeElements() {
+    elements.grid = document.getElementById('product-grid');
+    elements.modal = document.getElementById('product-cart-modal');
+    elements.cartList = document.getElementById('product-cart-items-list');
+    elements.totalPriceSpan = document.getElementById('product-total-price');
+    elements.totalItemsSpan = document.getElementById('product-total-items');
+    elements.cartCountSpan = document.getElementById('product-cart-count');
+    elements.openCartBtn = document.getElementById('product-open-cart');
+    elements.closeCartBtn = document.getElementById('product-close-cart');
+    
+    // References to the new buttons
+    elements.whatsappBtn = document.getElementById('product-place-whatsapp-btn');
+    elements.callBtn = document.getElementById('product-place-call-btn');
+    
+    elements.catalogSearchInput = document.getElementById('product-catalog-search');
+}
+
+window.onload = function() {
+    initializeElements();
+    renderProductGrid(productsData);
+    setupGlobalListeners();
+    updateCartDisplay();
+};
