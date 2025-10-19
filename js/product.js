@@ -6,7 +6,7 @@
 // --- CONFIGURATION ---
 // IMPORTANT: WhatsApp requires the number in international format (e.g., 91xxxxxxxxxx) without '+' or leading zeros.
 // Call dialing typically uses the '+' prefix.
-const CONTACT_NUMBER = "918897931335"; // Your WhatsApp/Call number updated with country code 91
+const CONTACT_NUMBER = "918879731335"; // Your WhatsApp/Call number updated with country code 91
 
 // Data Array: Using your provided data structure
 let productsData = [
